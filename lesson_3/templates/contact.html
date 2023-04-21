@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+	WSGI Framework contact us
+{% endblock %}
+
+{% block body %}
+	<div id="site_content">
+            {% include "side_bar.html" %}
+        <div id="content">
+            <!-- insert the page content here -->
+            <h2>Contact Us</h2>
+            <h3>
+                Dear {% if request.username %} {{ request.username }}{% else %}Anon{% endif %}, feel free to contact us:
+            </h3>
+            <form action="contact" method="post">
+                <div class="form_settings">
+                    <p>
+                        <span>Тема:</span>
+                        <input class="contact" type="text" name="topic" value="{{ form.topic }}"/>
+                    </p>
+                    <p><span>Ваш email:</span><input class="contact" type="email" name="email" value="{{ form.email }}"/></p>
+                    <p><span>Сообщение:</span>
+                        <textarea class="contact textarea" rows="8" cols="50" name="message">{{form.message}}</textarea>
+                    </p>
+                    <p style="padding-top: 15px"><span>&nbsp;</span>
+                        <input class="submit" type="submit" name="contact_submitted" value="Отправить"/>
+                    </p>
+                </div>
+            </form>
+
+            {% if form.result %}
+                <h4 style="text-align: center; color: green; margin: 30px" >
+                    {{ form.result }}
+                </h4>
+            {% endif %}
+
+            {% if form.error %}
+                <h4 style="text-align: center; color: red; margin: 30px" >
+                    {{ form.error }}
+                </h4>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
