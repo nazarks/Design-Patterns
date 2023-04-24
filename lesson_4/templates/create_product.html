@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+	WSGI Framework Create Product
+{% endblock %}
+
+{% block body %}
+	<div id="site_content">
+            {% include "includes/side_bar.html" %}
+        <div id="content">
+
+        <div>
+            <a href="/product-list/?category_id={{id}}">назад</a>
+            <br>
+
+            <h1>Добавление товаров или услуг для категории "{{name}}"</h1>
+            <form id="add_product_form" method="post">
+            <input type="text" name="name" placeholder="Название">
+            <br>
+            <div class="site_padding">
+                <label for="product_type">Выберите тип:</label>
+                <select name="product_type" id="product_type">
+                    {% for type in product_types %}
+                      <option value="{{type}}">{{type}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit">Сохранить и вернуться к списку товаров</button>
+        </form>
+        </div>
+
+        </div>
+    </div>
+{% endblock %}
