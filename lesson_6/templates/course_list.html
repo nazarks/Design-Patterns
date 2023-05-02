@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+	WSGI Framework course list
+{% endblock %}
+
+{% block body %}
+	<div id="site_content">
+            {% include "includes/side_bar.html" %}
+        <div id="content">
+
+        <div>
+            <div class="site_padding">
+                <a href="/">На главную</a>
+            </div>
+            <a href="/create-course/?id={{id}}">Создать курс</a>
+            <br>
+            <h1>Список курсов для категории "{{name}}"</h1>
+            {% for item in objects_list %}
+                <ul>
+                    <li>
+                        {{item.name}} <span><a href="/copy-course/?name={{item.name}}">скопировать</a></span>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+
+        </div>
+    </div>
+{% endblock %}
