@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+WSGI Framework Add Student to Course
+{% endblock %}
+
+{% block body %}
+<div id="site_content">
+    {% include "includes/side_bar.html" %}
+    <div id="content">
+        <h1>Добавление студента на курс</h1>
+
+        <div  class="site_padding">
+            <a href="/students-by-course/">Список студентов на курсам</a>
+        </div>
+            <form method="post">
+                <div class="site_padding">
+                    <label for="courses">Выберите курс:     </label>
+                    <select name="course_name" id="courses">
+                        {% for item in courses %}
+                        <option value="{{item.name}}">{{item.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <br>
+                <div class="site_padding">
+                    <label for="students">Выберите студента:</label>
+                    <select name="student_name" id="students">
+                        {% for item in students %}
+                        <option value="{{item.name}}">{{item.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit">Записать</button>
+            </form>
+        </div>
+        {% if student and course %}
+            Студент: {{student.name}} успешно добавлен на курс: {{course.name}}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

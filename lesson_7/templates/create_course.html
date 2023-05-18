@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+	WSGI Framework Create course
+{% endblock %}
+
+{% block body %}
+	<div id="site_content">
+            {% include "includes/side_bar.html" %}
+        <div id="content">
+
+        <div>
+            <a href="/course-list/?category_id={{id}}">назад</a>
+            <br>
+
+            <h1>Добавление курса в категорию"{{name}}"</h1>
+            <form id="add_course_form" method="post">
+            <input type="text" name="name" placeholder="Название">
+            <br>
+            <div class="site_padding">
+                <label for="course_type">Выберите тип:</label>
+                <select name="course_type" id="course_type">
+                    {% for type in course_types %}
+                      <option value="{{type}}">{{type}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Сохранить и вернуться к списку курсов</button>
+        </form>
+        </div>
+
+        </div>
+    </div>
+{% endblock %}
