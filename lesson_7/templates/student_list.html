@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+	WSGI Framework student list
+{% endblock %}
+
+{% block body %}
+	<div id="site_content">
+            {% include "includes/side_bar.html" %}
+        <div id="content">
+
+        <div>
+            <div class="site_padding">
+                <a href="/">На главную</a>
+            </div>
+
+            <a href="/create-student/">Добавить студента</a>
+            <br>
+            <h1>Список студентов </h1>
+            {% for item in objects_list %}
+                <ul>
+                    <li>
+                        {{item.name}}
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+
+        </div>
+    </div>
+{% endblock %}

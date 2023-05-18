@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+	WSGI Framework Students by Course
+{% endblock %}
+
+{% block body %}
+	<div id="site_content">
+            {% include "includes/side_bar.html" %}
+        <div id="content">
+
+        <div>
+            <h1>Список студентов на курсах</h1>
+            <div class="site_padding">
+                <a href="/">На главную</a>
+            </div>
+            <a href="/add-student/">Записать студента на курс</a>
+            <br>
+            <div class="site_padding">
+                <ul>
+                    {% for course in objects_list %}
+                    <li>
+                        <h5>Курс: {{course.name}}, количество студентов {{course.get_student_count()}}</h5>
+                        <ul>
+                        {% for student in course.students %}
+                                <li>
+                                    {{student.name}}
+                                </li>
+                        {% endfor %}
+                         </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        </div>
+    </div>
+{% endblock %}

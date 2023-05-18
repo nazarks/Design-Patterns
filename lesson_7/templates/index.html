@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+	WSGI Framework index
+{% endblock %}
+
+{% block body %}
+	<div id="site_content">
+            {% include "includes/side_bar.html" %}
+        <div id="content">
+
+        <div>
+            <a href="/create-category/">Создать новую главную категорию</a>
+        </div>
+        <div>
+            <h1>Список существующих категорий</h1>
+            <ul>
+            {% for item in objects_list %}
+                    <li>
+                        <h6>Категория: {{ item.name }}</h6>
+                        <a href="/course-list/?category_id={{item.id}}">
+                            Количество курсов: {{item.course_count()}}
+                        </a>
+                        <a href="/create-category/?parent_category_id={{item.id}}">Создать подкатегорию</a>
+                    </li>
+            {% endfor %}
+            </ul>
+        </div>
+
+        </div>
+    </div>
+{% endblock %}

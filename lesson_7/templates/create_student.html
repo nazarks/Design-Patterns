@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+	WSGI Framework Create student
+{% endblock %}
+
+{% block body %}
+	<div id="site_content">
+            {% include "includes/side_bar.html" %}
+        <div id="content">
+        <h1>Добавление студента</h1>
+
+        <div>
+               <a href="/student-list/">Список студентов</a>
+	    </div>
+
+        <div class="site_padding">
+            <form method="post">
+                <input type="text" name="name" placeholder="Имя">
+                <button type="submit">Сохранить</button>
+            </form>
+        </div>
+        {% if new_user %}
+            Студент: {{new_user.name}} успешно добавлен
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}
